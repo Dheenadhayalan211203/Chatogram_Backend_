@@ -13,7 +13,7 @@ require("dotenv").config();
 
  
 
-mongoose.connect(  process.env.mogouri, {
+mongoose.connect(   "mongodb+srv://Dheena:dheena123@cluster0.ser6ewc.mongodb.net/chatogram?retryWrites=true&w=majority&appName=Cluster0", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -53,11 +53,13 @@ app.post("/login",async (req,res)=>{
     const user= await User.findOne( data);
     if(user)
     {
-      res.send(mailid )
+      const islogin=true
+      res.json({mailid ,islogin})
        
     }
     else{
-        res.send( "Username Or Password Is Wrong")
+      const islogin=false
+        res.send(  islogin)
        
 
     }
