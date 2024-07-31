@@ -13,7 +13,7 @@ require("dotenv").config();
 
  
 
-mongoose.connect(process.env.mongouri, {
+mongoose.connect( "mongodb+srv://Dheena:dheena123@cluster0.ser6ewc.mongodb.net/chatogram?retryWrites=true&w=majority&appName=Cluster0", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -45,6 +45,30 @@ app.post("/signup", async (req, res) => {
     res.status(500).send("Error creating user");
   }
 });
+
+app.post("/login",async (req,res)=>{
+  const {mailid,password}=req.body;
+  try{
+    const data={mailid,password}
+    const user= await User.findOne( data);
+    if(user)
+    {
+      res.send(mailid )
+       
+    }
+    else{
+        res.send( "Username Or Password Is Wrong")
+       
+
+    }
+     
+  }
+  catch(e){
+
+    console.log("Error"+e)
+
+  }
+})
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
