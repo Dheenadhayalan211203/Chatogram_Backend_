@@ -59,7 +59,7 @@ app.post("/login",async (req,res)=>{
     }
     else{
       const islogin=false
-        res.send(  islogin)
+        res.json({islogin,status:"loginfailed"})
        
 
     }
