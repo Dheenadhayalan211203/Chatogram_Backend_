@@ -13,7 +13,7 @@ require("dotenv").config();
 
  
 
-mongoose.connect(   "mongodb+srv://Dheena:dheena123@cluster0.ser6ewc.mongodb.net/chatogram?retryWrites=true&w=majority&appName=Cluster0", {
+mongoose.connect( process.env.mongouri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
