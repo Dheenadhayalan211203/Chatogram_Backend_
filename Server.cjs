@@ -48,7 +48,7 @@ app.post("/login", async (req, res) => {
   const { mailid, password } = req.body;
   try {
     const user = await User.findOne({ mailid, password });
-    console.log(user.id);
+    res.send(user.id);
     if (user) {
       
       const islogin = true;
