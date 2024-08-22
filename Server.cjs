@@ -36,7 +36,7 @@ app.post("/signup", async (req, res) => {
     const lastUser = await User.findOne().sort({ id: -1 });
     const id = lastUser ? lastUser.id + 1 : 1;
 
-    const user = new User({ mailid, password, confirmpassword, name, phone, id });
+    const user = new User({ mailid, password, confirmpassword, name, phone, id:lastUser+1 });
     await user.save();
     res.status(201).send("User created successfully");
   } catch (error) {
