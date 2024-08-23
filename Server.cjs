@@ -47,11 +47,11 @@ app.post("/login", async (req, res) => {
   const { mailid, password } = req.body;
   try {
     const user = await User.findOne({ mailid, password });
-    res.send(user.id);
+     
     if (user) {
       
       const islogin = true;
-      res.json({ mailid, islogin });
+      res.json({ mailid, islogin,user.id });
     } else {
       const islogin = false;
       res.json({ islogin, status: "loginfailed" });
