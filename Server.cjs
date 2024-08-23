@@ -33,10 +33,9 @@ app.post("/signup", async (req, res) => {
       return res.status(400).send("User already exists");
     }
 
-    const lastUser = await User.findOne().sort({ id: -1 });
-    const id = lastUser ? lastUser.id + 1 : 1;
+  
 
-    const user = new User({ mailid, password, confirmpassword, name, phone, id:lastUser+1 });
+    const user = new User({ mailid, password, confirmpassword, name, phone });
     await user.save();
     res.status(201).send("User created successfully");
   } catch (error) {
