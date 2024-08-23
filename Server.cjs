@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
   confirmpassword: { type: String, required: true },
   name: { type: String, required: true },
   phone: { type: String, required: true },
-  id: { type: Number, required: true }
+   
 });
 
 const User = mongoose.model("User", userSchema);
